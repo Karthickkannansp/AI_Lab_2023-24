@@ -57,6 +57,9 @@ Step 10 : Obtain the plan for given problem.<br>
 ### Input 
 
 ### Output/Plan:
+![image](https://github.com/user-attachments/assets/2e010f3d-b371-4f55-8d4a-e07e7ad9dae7)
+![image](https://github.com/user-attachments/assets/a022a298-b84e-42b2-8d94-46b4f7c1ea13)
+
 
 
 
