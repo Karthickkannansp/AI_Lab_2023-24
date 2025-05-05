@@ -92,6 +92,13 @@ Step 7: Stop the program.<br>
 
 
 ### Output/Plan:
+![image](https://github.com/user-attachments/assets/933f93e1-69ae-41ed-b07b-d9e9eb2f22b2)
+![image](https://github.com/user-attachments/assets/26bc51f1-0b8c-4509-8567-834471ebfce5)
+![image](https://github.com/user-attachments/assets/f2b78038-43bb-407e-9225-56ede2fc3d05)
+![image](https://github.com/user-attachments/assets/6713962d-7a4f-473b-b2ff-7db975c080d8)
+![image](https://github.com/user-attachments/assets/1107fb8c-0599-46bb-a1b3-40932cfe62f0)
+![image](https://github.com/user-attachments/assets/14e41f5d-766c-4ab9-a91d-c8010d545958)
+
 
 
 
