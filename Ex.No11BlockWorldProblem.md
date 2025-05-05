@@ -55,6 +55,13 @@ Step 10 : Obtain the plan for given problem.<br>
 
 
 ### Input 
+```
+(define (problem pb1)
+   (:domain blocksworld)
+   (:objects a b)
+   (:init (on-table a) (on-table b)  (clear a)  (clear b) (arm-empty))
+   (:goal (and (on a b))))
+```
 
 ### Output/Plan:
 ![image](https://github.com/user-attachments/assets/2e010f3d-b371-4f55-8d4a-e07e7ad9dae7)
