@@ -116,8 +116,8 @@ plt.ylabel('Cumulative Explained Variance')
 plt.grid()
 plt.tight_layout()
 plt.show()
-'''
-###PROGRAM FOR VALIDATION TABLE:
+```
+### PROGRAM FOR VALIDATION TABLE:
 ```
 import pandas as pd
 from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
@@ -160,9 +160,15 @@ print(f"\n5-Fold Cross-Validation Accuracy: {cv_scores.mean():.4f} (+/- {cv_scor
 ```
 
 ### OUTPUT:
-![WhatsApp Image 2025-05-20 at 13 23 55_94c2cb97](https://github.com/user-attachments/assets/f0b64550-7e87-486c-aae7-e234f8392be4)
+![WhatsApp Image 2025-05-13 at 19 30 56_3787854c](https://github.com/user-attachments/assets/3dc1d5ee-3d2d-4543-962b-d6b317917dd6)
+![WhatsApp Image 2025-05-13 at 19 30 56_257abce6](https://github.com/user-attachments/assets/add5bd8c-fa9e-4af2-8247-226a46101987)
+![WhatsApp Image 2025-05-13 at 19 30 57_7663438c](https://github.com/user-attachments/assets/a882e6ef-dcd1-491f-bd6f-37eff7a90298)
+![WhatsApp Image 2025-05-13 at 19 30 57_6b62a1ae](https://github.com/user-attachments/assets/92dc5bcd-929c-4384-b74f-1d4ff5ccdf29)
+![WhatsApp Image 2025-05-13 at 19 30 57_c4e7c7ea](https://github.com/user-attachments/assets/f1f414cb-d6bd-4a21-bd33-f6281305c90f)
 
-###OUTPUT FOR VALIDATION:
+
+### OUTPUT FOR VALIDATION:
+![WhatsApp Image 2025-05-20 at 13 23 55_94c2cb97](https://github.com/user-attachments/assets/f0b64550-7e87-486c-aae7-e234f8392be4)
 
 
 ### Result:
