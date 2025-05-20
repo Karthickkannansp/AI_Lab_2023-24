@@ -4,6 +4,7 @@
 ### AIM: 
 To build a machine learning pipeline that uses Principal Component Analysis (PCA) for dimensionality reduction and Random Forest classification with hyperparameter tuning (via GridSearchCV) to accurately classify data.
 ###  Algorithm:
+```
 1.Import Libraries:
 Import necessary libraries such as pandas, sklearn modules, matplotlib, etc.
 2.Load the Dataset:
@@ -28,9 +29,10 @@ Perform cross-validation on the entire PCA-transformed dataset for robustness.
 9.Optional:
 Visualize the PCA results using a scatter plot.
 Save the best model using joblib or pickle for future use.
-
+```
 
 ### Program:
+```
 import pandas as pd
 from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
 from sklearn.preprocessing import LabelEncoder, StandardScaler
@@ -69,7 +71,7 @@ print("\nClassification Report:\n", classification_report(y_test, y_pred, target
 # Cross-validation score on the entire dataset for robustness
 cv_scores = cross_val_score(best_model, X_pca, y_encoded, cv=5, scoring='accuracy')
 print(f"\n5-Fold Cross-Validation Accuracy: {cv_scores.mean():.4f} (+/- {cv_scores.std():.4f})")
-
+```
 
 ### Output:
 https://github.com/your-username/your-repo-name/blob/main/filename.jpg?raw=true
