@@ -160,13 +160,10 @@ print(f"\n5-Fold Cross-Validation Accuracy: {cv_scores.mean():.4f} (+/- {cv_scor
 ```
 
 ### OUTPUT:
-![WhatsApp Image 2025-05-13 at 19 30 26_a5473b26](https://github.com/user-attachments/assets/ef9c77ca-67a1-49ed-b5c9-d2b2afd6f874)
-![WhatsApp Image 2025-05-13 at 19 30 26_e122ed1e](https://github.com/user-attachments/assets/d6cc551c-afdd-44b7-9197-7eb640d378d3)
-![WhatsApp Image 2025-05-13 at 19 30 27_a0bb44e6](https://github.com/user-attachments/assets/a136f5fa-f3ec-43ac-9b27-54461435d708)
-![WhatsApp Image 2025-05-13 at 19 30 27_697645b3](https://github.com/user-attachments/assets/9fe78ecf-0acd-47b7-9ba3-4083e236c6be)
+![WhatsApp Image 2025-05-13 at 19 30 26_8b3a47be](https://github.com/user-attachments/assets/ba8ed39f-addf-4d45-9370-6f4f1615d841)
+
 
 ###OUTPUT FOR VALIDATION:
-![WhatsApp Image 2025-05-20 at 13 21 33_44d4578f](https://github.com/user-attachments/assets/622820f8-8d58-4718-856d-15dbce2a7493)
 
 
 ### Result:
