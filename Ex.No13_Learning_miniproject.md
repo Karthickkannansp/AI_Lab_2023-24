@@ -160,8 +160,7 @@ print(f"\n5-Fold Cross-Validation Accuracy: {cv_scores.mean():.4f} (+/- {cv_scor
 ```
 
 ### OUTPUT:
-![WhatsApp Image 2025-05-13 at 19 30 26_8b3a47be](https://github.com/user-attachments/assets/ba8ed39f-addf-4d45-9370-6f4f1615d841)
-
+![WhatsApp Image 2025-05-20 at 13 23 55_94c2cb97](https://github.com/user-attachments/assets/f0b64550-7e87-486c-aae7-e234f8392be4)
 
 ###OUTPUT FOR VALIDATION:
 
