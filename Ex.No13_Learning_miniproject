@@ -2,13 +2,116 @@
 ### DATE:                                                                            
 ### REGISTER NUMBER : 
 ### AIM: 
-To write a program to train the classifier for -----------------.
+Aim:
+To build a machine learning pipeline that uses Principal Component Analysis (PCA) for dimensionality reduction and Random Forest classification with hyperparameter tuning (via GridSearchCV) to accurately classify data.
 ###  Algorithm:
+Procedure:
+1.Import Libraries:
+
+Import necessary libraries such as pandas, sklearn modules, matplotlib, etc.
+
+2.Load the Dataset:
+
+Load the dataset into a pandas DataFrame.
+
+Split the dataset into features (X) and target (y).
+
+3.Preprocess the Data:
+
+Use StandardScaler to standardize the feature set so that each feature contributes equally to the analysis.
+
+Encode categorical target labels using LabelEncoder.
+
+4.Apply PCA:
+
+Perform Principal Component Analysis to reduce the dimensionality of the dataset while retaining 95% of the variance.
+
+5.Train-Test Split:
+
+Split the PCA-transformed dataset into training and testing sets (e.g., 80% training, 20% testing).
+
+6.Hyperparameter Tuning with GridSearchCV:
+
+Define a parameter grid for the RandomForestClassifier.
+
+Use GridSearchCV with 5-fold cross-validation to find the best combination of hyperparameters.
+
+7.Train the Model:
+
+Fit the best model found by GridSearchCV on the training data.
+
+8.Evaluate the Model:
+
+Predict the target labels for the test set.
+
+Calculate accuracy and generate a classification report.
+
+Perform cross-validation on the entire PCA-transformed dataset for robustness.
+
+9.Optional:
+
+Visualize the PCA results using a scatter plot.
+
+Save the best model using joblib or pickle for future use.
+
 
 ### Program:
+import pandas as pd
+from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.decomposition import PCA
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, accuracy_score
+import matplotlib.pyplot as plt
+
+
+
+# Standardize features
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# PCA to retain 95% variance
+pca = PCA(n_components=0.95)
+X_pca = pca.fit_transform(X_scaled)
+
+print(f"PCA reduced to {X_pca.shape[1]} components")
+
+# Encode target labels
+le = LabelEncoder()
+y_encoded = le.fit_transform(y)
+
+# Split for final evaluation after CV
+X_train, X_test, y_train, y_test = train_test_split(X_pca, y_encoded, test_size=0.2, random_state=42)
+
+# RandomForest with GridSearchCV for hyperparameter tuning
+param_grid = {
+    'n_estimators': [100, 200, 300],
+    'max_depth': [None, 10, 20, 30],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4]
+}
+
+rf = RandomForestClassifier(random_state=42)
+
+grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, cv=5, n_jobs=-1, scoring='accuracy')
+grid_search.fit(X_train, y_train)
+
+print(f"Best Parameters: {grid_search.best_params_}")
+
+# Best model evaluation on test set
+best_model = grid_search.best_estimator_
+y_pred = best_model.predict(X_test)
+
+print("\nTest Accuracy:", accuracy_score(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred, target_names=le.classes_))
+
+# Cross-validation score on the entire dataset for robustness
+cv_scores = cross_val_score(best_model, X_pca, y_encoded, cv=5, scoring='accuracy')
+print(f"\n5-Fold Cross-Validation Accuracy: {cv_scores.mean():.4f} (+/- {cv_scores.std():.4f})")
 
 
 ### Output:
+https://github.com/your-username/your-repo-name/blob/main/filename.jpg?raw=true
 
 
 ### Result:
