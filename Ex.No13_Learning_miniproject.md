@@ -1,6 +1,6 @@
 # Ex.No: 13 Mini Project Title:-"Gas Sensor Array Data Analysis for Low-Concentration Detection" . 
 ### DATE:                                                                            
-### REGISTER NUMBER : 
+### REGISTER NUMBER : 212222060114
 ### AIM: 
 To build a machine learning pipeline that uses Principal Component Analysis (PCA) for dimensionality reduction and Random Forest classification with hyperparameter tuning (via GridSearchCV) to accurately classify data.
 ###  Algorithm:
@@ -32,6 +32,92 @@ Save the best model using joblib or pickle for future use.
 ```
 
 ### Program:
+```
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.decomposition import PCA
+from sklearn.ensemble import RandomForestClassifier
+
+# Load dataset
+df = pd.read_csv('/content/gsalc.csv')
+
+# Extract Target
+df['Gas_Type'] = df.iloc[:, 0]
+df['Concentration'] = df.iloc[:, 1]
+
+# Extract Numeric Sensor Data
+#X = df.drop(columns=['Gas_Type', 'Concentration']).astype(float)
+X = df.select_dtypes(include=[np.number])
+y = df['Concentration']
+
+# 1. Sample Distribution Plot
+plt.figure(figsize=(10, 6))
+sns.countplot(data=df, x='Concentration', palette='viridis')
+plt.title('Sample Distribution per Concentration Level')
+plt.xlabel('Concentration Level')
+plt.ylabel('Number of Samples')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+# 2. Correlation Heatmap (First 20 sensors)
+plt.figure(figsize=(12, 10))
+subset_corr = X.iloc[:, :20].corr()
+sns.heatmap(subset_corr, cmap='coolwarm', annot=False)
+plt.title('Correlation Heatmap (First 20 Sensor Readings)')
+plt.show()
+
+# 3. PCA Visualization
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_scaled)
+
+df['PCA1'] = X_pca[:, 0]
+df['PCA2'] = X_pca[:, 1]
+
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=df, x='PCA1', y='PCA2', hue='Concentration', palette='Set2')
+plt.title('PCA Scatter Plot of Gas Sensor Data')
+plt.xlabel('Principal Component 1')
+plt.ylabel('Principal Component 2')
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.tight_layout()
+plt.show()
+# 4. Feature Importance (RandomForest)
+le = LabelEncoder()
+y_encoded = le.fit_transform(y)
+
+rf = RandomForestClassifier(n_estimators=100, random_state=42)
+rf.fit(X_scaled, y_encoded)
+
+importances = rf.feature_importances_
+indices = np.argsort(importances)[-20:]  # Top 20 important features
+
+plt.figure(figsize=(10, 6))
+plt.barh(range(len(indices)), importances[indices], align='center', color='teal')
+plt.yticks(range(len(indices)), [f'Sensor {i}' for i in indices])
+plt.xlabel('Relative Importance')
+plt.title('Top 20 Feature Importances (RandomForest)')
+plt.tight_layout()
+plt.show()
+# 5. PCA Explained Variance Plot
+pca_full = PCA().fit(X_scaled)
+
+plt.figure(figsize=(8, 5))
+plt.plot(np.cumsum(pca_full.explained_variance_ratio_), marker='o')
+plt.title('Cumulative Explained Variance by PCA Components')
+plt.xlabel('Number of Principal Components')
+plt.ylabel('Cumulative Explained Variance')
+plt.grid()
+plt.tight_layout()
+plt.show()
+'''
+###PROGRAM FOR VALIDATION TABLE:
 ```
 import pandas as pd
 from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
@@ -73,8 +159,14 @@ cv_scores = cross_val_score(best_model, X_pca, y_encoded, cv=5, scoring='accurac
 print(f"\n5-Fold Cross-Validation Accuracy: {cv_scores.mean():.4f} (+/- {cv_scores.std():.4f})")
 ```
 
-### Output:
-https://github.com/your-username/your-repo-name/blob/main/filename.jpg?raw=true
+### OUTPUT:
+![WhatsApp Image 2025-05-13 at 19 30 26_a5473b26](https://github.com/user-attachments/assets/ef9c77ca-67a1-49ed-b5c9-d2b2afd6f874)
+![WhatsApp Image 2025-05-13 at 19 30 26_e122ed1e](https://github.com/user-attachments/assets/d6cc551c-afdd-44b7-9197-7eb640d378d3)
+![WhatsApp Image 2025-05-13 at 19 30 27_a0bb44e6](https://github.com/user-attachments/assets/a136f5fa-f3ec-43ac-9b27-54461435d708)
+![WhatsApp Image 2025-05-13 at 19 30 27_697645b3](https://github.com/user-attachments/assets/9fe78ecf-0acd-47b7-9ba3-4083e236c6be)
+
+###OUTPUT FOR VALIDATION:
+![WhatsApp Image 2025-05-20 at 13 21 33_44d4578f](https://github.com/user-attachments/assets/622820f8-8d58-4718-856d-15dbce2a7493)
 
 
 ### Result:
