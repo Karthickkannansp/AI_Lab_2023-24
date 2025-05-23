@@ -1,5 +1,5 @@
 # Ex.No: 13 Mini Project Title:-"Gas Sensor Array Data Analysis for Low-Concentration Detection" . 
-### DATE:                                                                            
+### DATE: 13/05/2025                                                                           
 ### REGISTER NUMBER : 212222060114
 ### AIM: 
 To build a machine learning pipeline that uses Principal Component Analysis (PCA) for dimensionality reduction and Random Forest classification with hyperparameter tuning (via GridSearchCV) to accurately classify data.
