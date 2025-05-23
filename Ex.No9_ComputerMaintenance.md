@@ -38,7 +38,7 @@ problem(missing_dots).
 problem(spread_ink).
 problem(two_short_beeps).
 problem(blank_display).
-
+```
 ### OUTPUT:
 ![image](https://github.com/user-attachments/assets/311ce03d-9cba-4ac9-94b6-762f46cbba2f)
 
